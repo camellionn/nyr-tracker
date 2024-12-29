@@ -15,10 +15,12 @@ app.use(bodyParser.json());
 
 (async () => {
   try {
+    // eslint-disable-next-line no-undef
     await mongoose.connect(process.env.MONGO_URI!);
     console.log('MongoDB Connected');
   } catch (err) {
     console.error('Failed to connect to MongoDB:', err);
+    // eslint-disable-next-line no-undef
     process.exit(1);
   }
 })();
@@ -63,14 +65,15 @@ app.put('/api/resolutions', async (req: Request, res: Response) => {
 });
 
 app.delete('/api/resolutions', async (req: Request, res: Response) => {
-  const { userId, title, description, dueDate } = req.body;
+  const { userId } = req.body;
   try {
     const reso = await Resolution.findByIdAndDelete(userId);
-    res.status(204).end();
+    res.status(204).end(reso);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 });
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
