@@ -1,2 +1,3 @@
 # nyr-tracker
-web app to track new year resolution 
+
+web app to track new year resolution
