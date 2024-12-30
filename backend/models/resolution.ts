@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
 const ResolutionSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
+  userId: { type: String, required: false },
   title: { type: String, required: true },
-  description: { type: String },
+  description: { type: String, required: false },
   dueDate: { type: Date, required: true },
 });
 
