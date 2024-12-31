@@ -23,7 +23,9 @@ const List: React.FC<Props> = ({
 }) => {
   return (
     <div className="mt-8">
-      <h2 className="text-md font-semibold mb-2">Yout Resolutions</h2>
+      <h2 className="text-md font-semibold mb-2 text-white text-5xl">
+        Your Resolutions
+      </h2>
       {resolutions.map((reso) => (
         <Feature
           key={reso.id}

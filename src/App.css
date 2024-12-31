@@ -1,8 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+body {
+  background-color: #172554;
+}
+
+@font-face {
+  font-family: 'Chrismast';
+  src: url(C:\Users\Tra\Documents\nyr-tracker\ChristmasDemo-8MoEn.ttf);
+}
+
+@font-face {
+  font-family: 'Bloon';
+  src: url(C:\Users\Tra\Documents\nyr-tracker\InflateptxChrome-X3oPg.ttf);
 }
 
 .logo {
@@ -39,4 +57,28 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.container {
+  position: fixed; /* Use fixed to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Fireworks should be behind the content */
+  pointer-events: none; /* Allow interaction with UI elements on top */
+}
+
+h1,
+h2 {
+  font-family: 'Chrismast';
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+text {
+  color: white;
 }

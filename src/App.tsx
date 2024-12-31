@@ -5,6 +5,7 @@ import axios from 'axios';
 import Form from './components/Form';
 import List from './components/List';
 import ResolutionDetails from './components/ResolutionDetails'; // New component for details view
+import { Fireworks } from '@fireworks-js/react';
 
 interface Resolution {
   _id?: string;
@@ -93,27 +94,50 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="p-4">
-        <h1 className="text-lg font-bold mb-4">New Year's Resolutions</h1>
-        <Form
-          onSubmit={handleAddorEdit}
-          resolution={editResolution}
-          onCancel={() => setEditResolution(null)}
+      <div className="relative w-auto h-auto">
+        {/* Fireworks Component */}
+        <Fireworks
+          className="top-0 left-0 w-auto h-36"
+          options={{
+            autoresize: true,
+            explosion: 10,
+            sound: {
+              enabled: true,
+            },
+            opacity: 100,
+          }}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none', // Prevent interaction
+          }}
         />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <List
-                resolutions={resolutions}
-                onEdit={(resolution) => setEditResolution(resolution)}
-                onDelete={handleDelete}
-                onSendReminder={handleSendReminder}
-              />
-            }
+
+        <div className="relative p-4">
+          <h1 className="text-5xl mb-4 text-white">New Year Resolutions</h1>
+          <Form
+            onSubmit={handleAddorEdit}
+            resolution={editResolution}
+            onCancel={() => setEditResolution(null)}
           />
-          <Route path="/resolutions/:id" element={<ResolutionDetails />} />
-        </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <List
+                  resolutions={resolutions}
+                  onEdit={(resolution) => setEditResolution(resolution)}
+                  onDelete={handleDelete}
+                  onSendReminder={handleSendReminder}
+                />
+              }
+            />
+            <Route path="/resolutions/:id" element={<ResolutionDetails />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );

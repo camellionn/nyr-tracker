@@ -28,18 +28,46 @@ const Form: React.FC<Props> = ({ onSubmit, resolution, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
-      <Input
-        type="text"
-        placeholder=""
-        {...register('title', { required: true })}
-      />
+    <form
+      onSubmit={handleSubmit(handleFormSubmit)}
+      className="space-y-4 flex flex-col"
+    >
+      <div>
+        <p className="justify-start start-0 font-semibold pb-2 text-1xl">
+          Resolution Title
+        </p>
+        <Input
+          className="border border-gray-300 rounded-md px-4 py-2 text-white bg-blue-950"
+          type="text"
+          placeholder=""
+          {...register('title', { required: true })}
+        />
+      </div>
 
-      <Textarea placeholder="Description" {...register('description')} />
+      <div>
+        <p className="justify-start start-0 font-semibold pb-2 text-1xl text-white">
+          Description
+        </p>
+        <p>(optional)</p>
+        <Textarea
+          className="text-white  bg-blue-950"
+          placeholder="Description"
+          {...register('description')}
+        />
+      </div>
 
-      <Input type="date" {...register('dueDate', { required: true })} />
+      <div>
+        <p className="justify-start start-0 font-semibold pb-2 text-1xl">
+          Due Date
+        </p>
+        <Input
+          className="text-white"
+          type="date"
+          {...register('dueDate', { required: true })}
+        />
+      </div>
 
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 justify-center text-center">
         <Button type="submit" variant="outline">
           {resolution ? 'Update Resolution' : 'Add Resolution'}
         </Button>

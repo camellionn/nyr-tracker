@@ -30,7 +30,7 @@ const ResolutionDetails: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="border-white">
       <h1>Resolution Details</h1>
       <p>
         <strong>Title:</strong> {resolution.title}

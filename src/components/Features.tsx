@@ -1,5 +1,11 @@
 import React from 'react';
 import { Button } from '../components/ui/button';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../components/ui/accordion';
 
 interface Resolution {
   id?: string;
@@ -21,25 +27,38 @@ const Feature: React.FC<Props> = ({
   onDelete /*onSendReminder*/,
 }) => {
   return (
-    <div className="p-4 border rounded mb-2 flex justify-between items-center">
+    <div className="p-4 border rounded mb-2 flex flex-col justify-between items-center text-white">
       <div>
-        <p>
-          <strong>Title:</strong> {resolution.title}
-        </p>
-        <p>
-          <strong>Description:</strong> {resolution.description || 'N/A'}
-        </p>
-        <p>
-          <strong>Due Date:</strong>{' '}
-          {new Date(resolution.dueDate).toLocaleDateString()}
-        </p>
-      </div>
-      <div className="space-x-2">
-        <Button onClick={() => onEdit(resolution)}> Edit </Button>
-        <Button variant="destructive" onClick={() => onDelete(resolution)}>
-          {' '}
-          Delete{' '}
-        </Button>
+        <Accordion type="single" collapsible>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>
+              <p>
+                <strong>{resolution.title}</strong>
+              </p>
+            </AccordionTrigger>
+            <AccordionContent>
+              {resolution.description}
+              <p>
+                <strong>Due Date </strong>{' '}
+                {new Date(resolution.dueDate).toLocaleDateString()}
+              </p>
+              <div className="space-x-4 pt-4">
+                <Button variant="secondary" onClick={() => onEdit(resolution)}>
+                  {' '}
+                  Edit{' '}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="text-black"
+                  onClick={() => onDelete(resolution)}
+                >
+                  {' '}
+                  Delete{' '}
+                </Button>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );
