@@ -15,7 +15,7 @@ body {
 
 @font-face {
   font-family: 'Chrismast';
-  src: url(C:\Users\Tra\Documents\nyr-tracker\ChristmasDemo-8MoEn.ttf);
+  src: url(public\ChristmasDemo-8MoEn.ttf) format('truetype');
 }
 
 @font-face {
