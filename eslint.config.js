@@ -8,7 +8,7 @@ import prettierConfig from 'eslint-config-prettier';
 
 export default [
   {
-    ignores: ['dist'], // Files to ignore
+    ignores: ['dist', '.vercel/**/*'], // Files to ignore
   },
   {
     files: ['**/*.{ts,tsx}'], // Target TypeScript files
