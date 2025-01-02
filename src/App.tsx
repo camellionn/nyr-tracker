@@ -25,7 +25,9 @@ const App: React.FC = () => {
 
   const fetchResolutions = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/resolutions');
+      const response = await axios.get(
+        'https://nyr-tracker.onrender.com/api/resolutions'
+      );
       console.log('API Response:', response.data);
       setResolutions(response.data || []);
     } catch (error) {
@@ -39,7 +41,7 @@ const App: React.FC = () => {
     if (resolution._id) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/resolutions/${resolution._id}`,
+          `https://nyr-tracker.onrender.com${resolution._id}`,
           resolution
         );
         console.log('Resolution updated:', response.data);
@@ -52,7 +54,7 @@ const App: React.FC = () => {
     } else {
       try {
         const response = await axios.post(
-          'http://localhost:5000/api/resolutions',
+          'https://nyr-tracker.onrender.com/resolutions',
           resolution
         );
         console.log('Resolution created:', response.data);
@@ -72,9 +74,7 @@ const App: React.FC = () => {
     }
 
     try {
-      await axios.delete(
-        `http://localhost:5000/api/resolutions/${resolution._id}`
-      );
+      await axios.delete(`https://nyr-tracker.onrender.com/${resolution._id}`);
       fetchResolutions();
     } catch (error) {
       console.error('Error deleting resolution:', error);
@@ -83,7 +83,7 @@ const App: React.FC = () => {
 
   const handleSendReminder = async (id: string) => {
     try {
-      await axios.post('http://localhost:5000/api/resolutions/reminder', {
+      await axios.post('https://nyr-tracker.onrender.com/reminder', {
         id,
       });
       alert('Reminder email sent');
