@@ -41,7 +41,7 @@ const App: React.FC = () => {
     if (resolution._id) {
       try {
         const response = await axios.put(
-          `https://nyr-tracker.onrender.com${resolution._id}`,
+          `https://nyr-tracker.onrender.com/api/${resolution._id}`,
           resolution
         );
         console.log('Resolution updated:', response.data);
@@ -54,7 +54,7 @@ const App: React.FC = () => {
     } else {
       try {
         const response = await axios.post(
-          'https://nyr-tracker.onrender.com/resolutions',
+          'https://nyr-tracker.onrender.com/api/resolutions',
           resolution
         );
         console.log('Resolution created:', response.data);
