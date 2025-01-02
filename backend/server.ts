@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { Request, Response } from 'express';
-import Resolution from '../backend/models/resolution';
+import Resolution from './models/resolution';
 
 dotenv.config();
 
