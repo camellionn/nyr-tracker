@@ -41,7 +41,7 @@ const App: React.FC = () => {
     if (resolution._id) {
       try {
         const response = await axios.put(
-          `https://nyr-tracker.onrender.com/api/${resolution._id}`,
+          `https://nyr-tracker.onrender.com/api/resolutions/${resolution._id}`,
           resolution
         );
         console.log('Resolution updated:', response.data);
@@ -74,7 +74,9 @@ const App: React.FC = () => {
     }
 
     try {
-      await axios.delete(`https://nyr-tracker.onrender.com/${resolution._id}`);
+      await axios.delete(
+        `https://nyr-tracker.onrender.com/api/resolutions/${resolution._id}`
+      );
       fetchResolutions();
     } catch (error) {
       console.error('Error deleting resolution:', error);
